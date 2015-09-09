@@ -138,8 +138,9 @@ func (gom *Gom) Clone(args []string) error {
 			}
 		}
 	}
-
-	cmdArgs := []string{"go", "get", "-d"}
+	//添加了"-insecure"选项，为了防止一些git包不能正常下载安装的问题。为了解决下面的错误问题
+	// package ****: cannot download, *** uses insecure protocol
+	cmdArgs := []string{"go", "get", "-d", "-insecure"}
 	cmdArgs = append(cmdArgs, args...)
 	cmdArgs = append(cmdArgs, gom.name)
 
